@@ -1,0 +1,11 @@
+Query to find resouces from CloudTrail logs
+-------------------
+### To find backup job for a particular resource #####
+SELECT *
+FROM cloudtrail_logs_llog_rs_ctrailinsights
+WHERE 
+    eventsource = 'backup.amazonaws.com' and
+    eventname in ('BackupJobCompleted') and 
+    serviceeventdetails like '%vol-093238b52ed5ac3e3%';
+    
+-------------------
