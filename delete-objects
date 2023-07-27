@@ -1,0 +1,22 @@
+Python code to delete all versions (current + non-current)
+
+Install pip 
+  1. python -m ensurepip --upgrade
+  2. pip install boto3
+  ==========================
+  
+[cloudshell-user@ip-10-4-170-255 ~]$ cat delete.py 
+
+  #######################
+import boto3
+session = boto3.Session()
+s3 = session.resource(service_name='s3')
+bucket = s3.Bucket('del-allver')
+bucket.object_versions.delete()
+# bucket.delete()  ---> Uncomment this to delete bucket 
+#############################
+
+  ==========================
+
+
+  
